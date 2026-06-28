@@ -1,20 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
-
-import { Button } from "../components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "../components/ui/avatar";

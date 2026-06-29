@@ -1,4 +1,4 @@
-# Task Manager (Taskify)
+# Task Management platform (Taskverse)
 
 A full-stack todo application with user authentication and per-user task management.
 

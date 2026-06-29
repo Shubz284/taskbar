@@ -9,7 +9,7 @@ A full-stack todo application with user authentication and per-user task managem
 
 ## Live Demo
 
-- **Frontend:** _(add your Vercel URL)_
+- **Frontend:** https://taskbar-blue.vercel.app
 - **Backend API:** https://taskbar-backend-v8sa.onrender.com
 
 ## Features

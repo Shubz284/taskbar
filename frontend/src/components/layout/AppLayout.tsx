@@ -21,7 +21,9 @@ const AppLayout = () => {
               </div>
             </div>
           </div>
-          <Outlet />
+          <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
+            <Outlet />
+          </main>
         </div>
       </div>
     </SidebarProvider>

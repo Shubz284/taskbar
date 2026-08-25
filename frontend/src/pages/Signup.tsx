@@ -147,7 +147,7 @@ const Signup = () => {
                 Login
               </div>
               <div
-                className="flex items-center p-0.5 gap-0.5 bg-gray-100 text-gray-700 border-2 border-solid rounded-sm cursor-pointer shadow-md hover:text-black "
+                className="auth-tab-active flex items-center p-0.5 gap-0.5 bg-gray-100 text-gray-700 border-2 border-solid rounded-sm cursor-pointer shadow-md hover:text-black "
                 onClick={() => navigate("/")}
               >
                 <UserLock size={15} />

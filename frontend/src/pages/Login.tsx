@@ -135,7 +135,7 @@ const Login = () => {
           <div className="auth-switcher">
             <div className="flex gap-3">
               <div
-                className="flex items-center p-0.5 gap-0.5 bg-gray-100 text-gray-700 rounded-sm cursor-pointer shadow-md hover:text-black "
+                className="auth-tab-active flex items-center p-0.5 gap-0.5 bg-gray-100 text-gray-700 rounded-sm cursor-pointer shadow-md hover:text-black "
                 onClick={() => navigate("/login")}
               >
                 <LogIn size={15} />

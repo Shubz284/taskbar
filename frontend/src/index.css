@@ -259,7 +259,7 @@
     color 160ms ease,
     border-color 160ms ease;
 }
-.auth-switcher > div > div:first-child {
+.auth-switcher > div > div.auth-tab-active {
   color: #183f3a;
   border-bottom-color: #e7b45b !important;
 }

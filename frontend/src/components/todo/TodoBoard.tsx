@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import { toast } from "sonner";
 import getErrorMessage from "@/lib/utils";
 import TodoCard from "./TodoCard";
@@ -21,12 +22,29 @@ const TodoBoard = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [activeTab, setActiveTab] = useState<"active" | "completed">("active");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [activeTab, setActiveTab] = useState<"all" | "active" | "completed">(
+    searchParams.get("view") === "completed"
+      ? "completed"
+      : searchParams.get("view") === "active"
+        ? "active"
+        : "all",
+  );
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
     fetchTodos();
   }, []);
+
+  useEffect(() => {
+    const view = searchParams.get("view");
+    setActiveTab(view === "active" || view === "completed" ? view : "all");
+  }, [searchParams]);
+
+  const handleTabChange = (tab: "all" | "active" | "completed") => {
+    setActiveTab(tab);
+    setSearchParams(tab === "all" ? {} : { view: tab });
+  };
 
   const handleDeleteTodo = async (todoId: string) => {
     try {
@@ -138,7 +156,11 @@ const TodoBoard = () => {
   const filteredTodos = todos.filter((todo) => {
     // Filter by tab (active/completed)
     const matchesTab =
-      activeTab === "active" ? !todo.completed : todo.completed;
+      activeTab === "all"
+        ? true
+        : activeTab === "active"
+          ? !todo.completed
+          : todo.completed;
 
     // Filter by search query (case-insensitive search in title and description)
     const matchesSearch =
@@ -182,16 +204,18 @@ const TodoBoard = () => {
       </div>
       <div className="mx-4 rounded-md rounded-l min-h-full bg-white  pb-6">
         <div className="px-4 pt-4">
-          <TodoTabs activeTab={activeTab} onTabChange={setActiveTab} />
+          <TodoTabs activeTab={activeTab} onTabChange={handleTabChange} />
         </div>
         <div className="grid grid-cols-1 gap-4 px-4 pb-4 pt-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {filteredTodos.length === 0 ? (
             <p className="text-gray-500 col-span-full text-center">
               {searchQuery.trim() !== ""
                 ? "No todos found matching your search."
-                : activeTab === "active"
-                  ? "No active tasks. Add your todoS!"
-                  : "No completed tasks yet."}
+                : activeTab === "all"
+                  ? "No tasks yet. Add your first todo!"
+                  : activeTab === "active"
+                    ? "No active tasks. Add your todoS!"
+                    : "No completed tasks yet."}
             </p>
           ) : (
             filteredTodos.map((todo, index) => (

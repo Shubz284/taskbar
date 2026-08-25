@@ -21,7 +21,7 @@
 
 // export default Sidebar
 
-import { ListTodo, NotebookTabs } from "lucide-react";
+import { CheckCircle2, ListTodo, NotebookTabs, Rows3 } from "lucide-react";
 
 import {
   Sidebar,
@@ -38,9 +38,19 @@ import { Link, useLocation } from "react-router";
 // Menu items.
 const items = [
   {
-    title: "Todos",
-    url: "#",
+    title: "All tasks",
+    url: "/dashboard",
     icon: ListTodo,
+  },
+  {
+    title: "Active",
+    url: "/dashboard?view=active",
+    icon: Rows3,
+  },
+  {
+    title: "Completed",
+    url: "/dashboard?view=completed",
+    icon: CheckCircle2,
   },
 ];
 
@@ -63,9 +73,14 @@ export default function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     asChild
-                    isActive={location.pathname === "/dashboard"}
+                    isActive={
+                      location.pathname + location.search === item.url ||
+                      (item.title === "All tasks" &&
+                        location.pathname === "/dashboard" &&
+                        !location.search)
+                    }
                   >
-                    <Link to="/dashboard">
+                    <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>

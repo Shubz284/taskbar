@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,5 +120,222 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(420px, 1.08fr);
+  background: #f6f3ee;
+  color: #25272a;
+  font-family: "DM Sans", sans-serif;
+}
+
+.auth-welcome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  overflow: hidden;
+  background: #183f3a;
+  color: #f4efe5;
+}
+
+.auth-welcome::after {
+  content: "";
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  right: -12rem;
+  bottom: -12rem;
+  border: 1px solid rgba(231, 180, 91, 0.45);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2rem rgba(231, 180, 91, 0.08),
+    0 0 0 4rem rgba(231, 180, 91, 0.06);
+}
+
+.auth-mark {
+  position: relative;
+  z-index: 1;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244, 239, 229, 0.55);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.auth-mark span {
+  color: #e7b45b;
+}
+.auth-welcome-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 32rem;
+}
+.auth-eyebrow {
+  margin: 0 0 0.8rem;
+  color: #ba8f4c;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.auth-welcome .auth-eyebrow {
+  color: #e7b45b;
+}
+.auth-welcome h1 {
+  margin: 0;
+  font-size: clamp(3.4rem, 6vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+.auth-welcome h1 em {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 500;
+}
+.auth-description {
+  max-width: 24rem;
+  margin: 2rem 0 0;
+  color: #c7d2cb;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.auth-note {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #c7d2cb;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.auth-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem clamp(1.25rem, 6vw, 7rem);
+}
+.auth-form-wrap {
+  width: min(100%, 27rem);
+}
+.auth-heading {
+  margin-bottom: 2rem;
+}
+.auth-heading h2 {
+  margin: 0;
+  color: #25272a;
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+}
+.auth-heading > p:last-child {
+  margin: 0.5rem 0 0;
+  color: #737771;
+  font-size: 0.9rem;
+}
+.auth-switcher {
+  margin-bottom: 1.4rem;
+}
+.auth-switcher > div {
+  gap: 0.5rem;
+}
+.auth-switcher > div > div {
+  padding: 0.55rem 0.75rem;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+.auth-switcher > div > div:first-child {
+  color: #183f3a;
+  border-bottom-color: #e7b45b !important;
+}
+.auth-form-wrap form {
+  display: grid;
+  gap: 1.1rem;
+}
+.auth-form-wrap form > div {
+  width: 100%;
+}
+.auth-form-wrap label {
+  color: #3e4641;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.auth-form-wrap input {
+  margin-top: 0.15rem;
+  border: 1px solid #d9d7d0;
+  border-radius: 0.25rem;
+  background: #fffefa;
+  color: #25272a;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.auth-form-wrap input:focus {
+  border-color: #183f3a;
+  box-shadow: 0 0 0 3px rgba(24, 63, 58, 0.1);
+}
+.auth-form-wrap button {
+  border-radius: 0.25rem;
+  background: #183f3a;
+  padding: 0.8rem;
+  font-weight: 600;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+.auth-form-wrap button:hover {
+  background: #286057;
+  transform: translateY(-1px);
+}
+.auth-form-wrap .mt-2 {
+  margin-top: 0.3rem;
+}
+.auth-form-wrap > div:last-child {
+  justify-content: center;
+  color: #737771;
+  font-size: 0.78rem;
+}
+.auth-form-wrap h3 {
+  color: #183f3a;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .auth-page {
+    display: block;
+  }
+  .auth-welcome {
+    min-height: 20rem;
+    padding: 1.5rem;
+  }
+  .auth-welcome h1 {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+  .auth-description {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+  }
+  .auth-note {
+    display: none;
+  }
+  .auth-form-panel {
+    padding: 2.5rem 1.5rem 3rem;
   }
 }
